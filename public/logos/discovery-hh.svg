@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120">
+  <rect width="400" height="120" rx="20" fill="#042f2e"/>
+  <circle cx="65" cy="60" r="38" fill="#0d9488"/>
+  <text x="65" y="72" font-family="Arial, sans-serif" font-weight="900" font-size="44" fill="#ffffff" text-anchor="middle">D</text>
+  <text x="130" y="55" font-family="Arial, sans-serif" font-weight="bold" font-size="28" fill="#14b8a6">Discovery</text>
+  <text x="130" y="85" font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="#ffffff">HOME &amp; HEALTH</text>
+</svg>

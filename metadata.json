@@ -1,0 +1,6 @@
+{
+  "name": "SatvApk IPTV Smart TV Player",
+  "description": "Aplicativo IPTV estilo Smart TV com navegação por controle remoto, player seguro Ad-Shield, logos oficiais e interface imersiva no tema #690909.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
