@@ -3,264 +3,402 @@
  */
 
 export const m3uPlaylist = `#EXTM3U
-#EXTINF:-1 tvg-id="band" tvg-name="Band" tvg-logo="/logos/band.png" group-title="Abertos",Band
-https://rdcanais.net/band.m3u8
-#EXTINF:-1 tvg-id="band-sp" tvg-name="Band SP" tvg-logo="/logos/band-sp.png" group-title="Abertos",Band SP
-https://rdcanais.net/bandsp.m3u8
-#EXTINF:-1 tvg-id="integracao-juiz-de-fora" tvg-name="INTEGRAÇÃO JUIZ DE FORA" tvg-logo="/logos/integracao-juiz-de-fora.png" group-title="Abertos",INTEGRAÇÃO JUIZ DE FORA
-https://rdcanais.net/integracaojf.m3u8
-#EXTINF:-1 tvg-id="globo-mg" tvg-name="Globo MG" tvg-logo="/logos/globo-mg.png" group-title="Abertos",Globo MG
-https://rdcanais.net/globomg.m3u8
-#EXTINF:-1 tvg-id="globo-es" tvg-name="Globo ES" tvg-logo="/logos/globo-es.png" group-title="Abertos",Globo ES
-https://rdcanais.net/globoes.m3u8
-#EXTINF:-1 tvg-id="globo-rj" tvg-name="Globo RJ" tvg-logo="/logos/globo-rj.png" group-title="Abertos",Globo RJ
-https://rdcanais.net/globorj.m3u8
-#EXTINF:-1 tvg-id="globo-sp" tvg-name="Globo SP" tvg-logo="/logos/globo-sp.png" group-title="Abertos",Globo SP
-https://rdcanais.net/globosp.m3u8
-#EXTINF:-1 tvg-id="futura" tvg-name="Futura" tvg-logo="/logos/futura.png" group-title="Abertos",Futura
-https://rdcanais.net/futura.m3u8
-#EXTINF:-1 tvg-id="record-mg" tvg-name="Record MG" tvg-logo="/logos/record-mg.png" group-title="Abertos",Record MG
-https://rdcanais.net/recordmg.m3u8
-#EXTINF:-1 tvg-id="record-tv" tvg-name="Record TV" tvg-logo="/logos/record-tv.png" group-title="Abertos",Record TV
-https://rdcanais.net/recordtv.m3u8
-#EXTINF:-1 tvg-id="rede-tv" tvg-name="Rede TV" tvg-logo="/logos/rede-tv.png" group-title="Abertos",Rede TV
-https://rdcanais.net/redetv.m3u8
-#EXTINF:-1 tvg-id="sbt-mg-alterosa" tvg-name="SBT MG ALTEROSA" tvg-logo="/logos/sbt-mg-alterosa.png" group-title="Abertos",SBT MG ALTEROSA
-https://rdcanais.net/sbtmgalterosa.m3u8
-#EXTINF:-1 tvg-id="sbt" tvg-name="SBT" tvg-logo="/logos/sbt.png" group-title="Abertos",SBT
-https://rdcanais.net/sbt.m3u8
-#EXTINF:-1 tvg-id="tv-brasil" tvg-name="TV Brasil" tvg-logo="/logos/tv-brasil.png" group-title="Abertos",TV Brasil
-https://rdcanais.net/tvbrasil.m3u8
-#EXTINF:-1 tvg-id="tv-cultura" tvg-name="TV Cultura" tvg-logo="/logos/tv-cultura.png" group-title="Abertos",TV Cultura
-https://rdcanais.net/tvcultura.m3u8
-#EXTINF:-1 tvg-id="agro" tvg-name="Agro+" tvg-logo="/logos/agro.png" group-title="Documentários",Agro+
-https://rdcanais.net/agroplus.m3u8
-#EXTINF:-1 tvg-id="animal-planet" tvg-name="Animal Planet" tvg-logo="/logos/animal-planet.png" group-title="Documentários",Animal Planet
-https://rdcanais.net/animalplanet.m3u8
-#EXTINF:-1 tvg-id="arte-1" tvg-name="Arte 1" tvg-logo="/logos/arte-1.png" group-title="Documentários",Arte 1
-https://rdcanais.net/arte1.m3u8
-#EXTINF:-1 tvg-id="curta" tvg-name="Curta!" tvg-logo="/logos/curta.svg" group-title="Documentários",Curta!
-https://rdcanais.net/curta.m3u8
-#EXTINF:-1 tvg-id="discovery-channel" tvg-name="Discovery Channel" tvg-logo="/logos/discovery-channel.png" group-title="Documentários",Discovery Channel
-https://rdcanais.net/discoverychannel.m3u8
-#EXTINF:-1 tvg-id="discovery-h-h" tvg-name="Discovery H&H" tvg-logo="/logos/discovery-hh.svg" group-title="Documentários",Discovery H&H
-https://rdcanais.net/discoveryhh.m3u8
-#EXTINF:-1 tvg-id="discovery-science" tvg-name="Discovery Science" tvg-logo="/logos/discovery-science.png" group-title="Documentários",Discovery Science
-https://rdcanais.net/discoveryscience.m3u8
-#EXTINF:-1 tvg-id="discovery-theater" tvg-name="Discovery Theater" tvg-logo="/logos/discovery-theater.png" group-title="Documentários",Discovery Theater
-https://rdcanais.net/discoverytheater.m3u8
-#EXTINF:-1 tvg-id="discovery-turbo" tvg-name="Discovery Turbo" tvg-logo="/logos/discovery-turbo.png" group-title="Documentários",Discovery Turbo
-https://rdcanais.net/discoveryturbo.m3u8
-#EXTINF:-1 tvg-id="discovery-world" tvg-name="Discovery World" tvg-logo="/logos/discovery-world.png" group-title="Documentários",Discovery World
-https://rdcanais.net/discoveryworld.m3u8
-#EXTINF:-1 tvg-id="dog-tv" tvg-name="Dog TV" tvg-logo="/logos/dog-tv.png" group-title="Documentários",Dog TV
-https://rdcanais.net/dogtv.m3u8
-#EXTINF:-1 tvg-id="fish-tv" tvg-name="Fish TV" tvg-logo="/logos/fish-tv.png" group-title="Documentários",Fish TV
-https://rdcanais.net/fishtv.m3u8
-#EXTINF:-1 tvg-id="food-network" tvg-name="Food Network" tvg-logo="/logos/food-network.png" group-title="Documentários",Food Network
-https://rdcanais.net/foodnetwork.m3u8
-#EXTINF:-1 tvg-id="hgtv" tvg-name="HGTV" tvg-logo="/logos/hgtv.png" group-title="Documentários",HGTV
-https://rdcanais.net/hgtv.m3u8
-#EXTINF:-1 tvg-id="history-2" tvg-name="History 2" tvg-logo="/logos/history-2.png" group-title="Documentários",History 2
-https://rdcanais.net/history2.m3u8
-#EXTINF:-1 tvg-id="history-channel" tvg-name="History Channel" tvg-logo="/logos/history-channel.png" group-title="Documentários",History Channel
-https://rdcanais.net/historychannel.m3u8
-#EXTINF:-1 tvg-id="investigacao-discovery" tvg-name="Investigação Discovery" tvg-logo="/logos/investigacao-discovery.png" group-title="Documentários",Investigação Discovery
-https://rdcanais.net/investigacaodiscovery.m3u8
-#EXTINF:-1 tvg-id="natgeo-wild" tvg-name="NatGeo Wild" tvg-logo="/logos/natgeo-wild.png" group-title="Documentários",NatGeo Wild
-https://rdcanais.net/natgeowild.m3u8
-#EXTINF:-1 tvg-id="national-geographic" tvg-name="National Geographic" tvg-logo="/logos/national-geographic.png" group-title="Documentários",National Geographic
-https://rdcanais.net/nationalgeographic.m3u8
-#EXTINF:-1 tvg-id="tlc" tvg-name="TLC" tvg-logo="/logos/tlc.png" group-title="Documentários",TLC
-https://rdcanais.net/tlc.m3u8
-#EXTINF:-1 tvg-id="travel-box-brasil" tvg-name="Travel Box Brasil" tvg-logo="/logos/travel-box-brasil.png" group-title="Documentários",Travel Box Brasil
-https://rdcanais.net/travelboxbrasil.m3u8
-#EXTINF:-1 tvg-id="band-sports" tvg-name="Band Sports" tvg-logo="/logos/band-sports.png" group-title="Esportes",Band Sports
-https://rdcanais.net/bandsports.m3u8
-#EXTINF:-1 tvg-id="combate" tvg-name="Combate" tvg-logo="/logos/combate.png" group-title="Esportes",Combate
-https://rdcanais.net/combate.m3u8
-#EXTINF:-1 tvg-id="dazn" tvg-name="DAZN" tvg-logo="/logos/dazn.png" group-title="Esportes",DAZN
-https://rdcanais.net/dazn1.m3u8
-#EXTINF:-1 tvg-id="dazn-2" tvg-name="DAZN 2" tvg-logo="/logos/dazn-2.png" group-title="Esportes",DAZN 2
-https://rdcanais.net/dazn2.m3u8
-#EXTINF:-1 tvg-id="dazn-3" tvg-name="DAZN 3" tvg-logo="/logos/dazn-3.png" group-title="Esportes",DAZN 3
-https://rdcanais.net/dazn3.m3u8
-#EXTINF:-1 tvg-id="dazn-4" tvg-name="DAZN 4" tvg-logo="/logos/dazn-4.png" group-title="Esportes",DAZN 4
-https://rdcanais.net/dazn4.m3u8
-#EXTINF:-1 tvg-id="espn" tvg-name="ESPN" tvg-logo="/logos/espn.png" group-title="Esportes",ESPN
-https://rdcanais.net/espn.m3u8
-#EXTINF:-1 tvg-id="espn-2" tvg-name="ESPN 2" tvg-logo="/logos/espn-2.png" group-title="Esportes",ESPN 2
-https://rdcanais.net/espn2.m3u8
-#EXTINF:-1 tvg-id="espn-3" tvg-name="ESPN 3" tvg-logo="/logos/espn-3.png" group-title="Esportes",ESPN 3
-https://rdcanais.net/espn3.m3u8
-#EXTINF:-1 tvg-id="espn-4" tvg-name="ESPN 4" tvg-logo="/logos/espn-4.png" group-title="Esportes",ESPN 4
-https://rdcanais.net/espn4.m3u8
-#EXTINF:-1 tvg-id="espn-5" tvg-name="ESPN 5" tvg-logo="/logos/espn-5.png" group-title="Esportes",ESPN 5
-https://rdcanais.net/espn5.m3u8
-#EXTINF:-1 tvg-id="espn-6" tvg-name="ESPN 6" tvg-logo="/logos/espn-6.png" group-title="Esportes",ESPN 6
-https://rdcanais.net/espn6.m3u8
-#EXTINF:-1 tvg-id="fox-sports" tvg-name="Fox Sports" tvg-logo="/logos/fox-sports.png" group-title="Esportes",Fox Sports
-https://rdcanais.net/foxsports.m3u8
-#EXTINF:-1 tvg-id="fox-sports-2" tvg-name="Fox Sports 2" tvg-logo="/logos/fox-sports-2.png" group-title="Esportes",Fox Sports 2
-https://rdcanais.net/foxsports2.m3u8
-#EXTINF:-1 tvg-id="premiere" tvg-name="Premiere" tvg-logo="/logos/premiere.png" group-title="Esportes",Premiere
-https://rdcanais.net/premiere.m3u8
-#EXTINF:-1 tvg-id="premiere-2" tvg-name="Premiere 2" tvg-logo="/logos/premiere-2.png" group-title="Esportes",Premiere 2
-https://rdcanais.net/premiere2.m3u8
-#EXTINF:-1 tvg-id="premiere-3" tvg-name="Premiere 3" tvg-logo="/logos/premiere-3.png" group-title="Esportes",Premiere 3
-https://rdcanais.net/premiere3.m3u8
-#EXTINF:-1 tvg-id="premiere-4" tvg-name="Premiere 4" tvg-logo="/logos/premiere-4.png" group-title="Esportes",Premiere 4
-https://rdcanais.net/premiere4.m3u8
-#EXTINF:-1 tvg-id="premiere-5" tvg-name="Premiere 5" tvg-logo="/logos/premiere-5.png" group-title="Esportes",Premiere 5
-https://rdcanais.net/premiere5.m3u8
-#EXTINF:-1 tvg-id="premiere-6" tvg-name="Premiere 6" tvg-logo="/logos/premiere-6.png" group-title="Esportes",Premiere 6
-https://rdcanais.net/premiere6.m3u8
-#EXTINF:-1 tvg-id="premiere-7" tvg-name="Premiere 7" tvg-logo="/logos/premiere-7.png" group-title="Esportes",Premiere 7
-https://rdcanais.net/premiere7.m3u8
-#EXTINF:-1 tvg-id="premiere-clubes" tvg-name="Premiere Clubes" tvg-logo="/logos/premiere-clubes.png" group-title="Esportes",Premiere Clubes
-https://rdcanais.net/premiereclubes.m3u8
-#EXTINF:-1 tvg-id="sporttv" tvg-name="SportTV" tvg-logo="/logos/sporttv.png" group-title="Esportes",SportTV
-https://rdcanais.net/sportv.m3u8
-#EXTINF:-1 tvg-id="sporttv-2" tvg-name="SportTV 2" tvg-logo="/logos/sporttv-2.png" group-title="Esportes",SportTV 2
-https://rdcanais.net/sportv2.m3u8
-#EXTINF:-1 tvg-id="sporttv-3" tvg-name="SportTV 3" tvg-logo="/logos/sporttv-3.png" group-title="Esportes",SportTV 3
-https://rdcanais.net/sportv3.m3u8
-#EXTINF:-1 tvg-id="sporttv-4" tvg-name="SportTV 4" tvg-logo="/logos/sporttv-4.png" group-title="Esportes",SportTV 4
-https://rdcanais.net/sportv4.m3u8
-#EXTINF:-1 tvg-id="sporttv-5" tvg-name="SportTV 5" tvg-logo="/logos/sporttv-5.png" group-title="Esportes",SportTV 5
-https://rdcanais.net/sportv5.m3u8
-#EXTINF:-1 tvg-id="sporttv-6" tvg-name="SportTV 6" tvg-logo="/logos/sporttv-6.png" group-title="Esportes",SportTV 6
-https://rdcanais.net/sportv6.m3u8
-#EXTINF:-1 tvg-id="off" tvg-name="Off" tvg-logo="/logos/off.png" group-title="Esportes",Off
-https://rdcanais.net/off.m3u8
-#EXTINF:-1 tvg-id="a-e" tvg-name="A&E" tvg-logo="/logos/a-e.png" group-title="Filmes e Séries",A&E
-https://rdcanais.net/ae.m3u8
-#EXTINF:-1 tvg-id="amc" tvg-name="AMC" tvg-logo="/logos/amc.png" group-title="Filmes e Séries",AMC
-https://rdcanais.net/amc.m3u8
-#EXTINF:-1 tvg-id="art-1" tvg-name="Art 1" tvg-logo="/logos/art-1.png" group-title="Filmes e Séries",Art 1
-https://rdcanais.net/art1.m3u8
-#EXTINF:-1 tvg-id="axn" tvg-name="AXN" tvg-logo="/logos/axn.png" group-title="Filmes e Séries",AXN
-https://rdcanais.net/axn.m3u8
-#EXTINF:-1 tvg-id="canal-brasil" tvg-name="Canal Brasil" tvg-logo="/logos/canal-brasil.png" group-title="Filmes e Séries",Canal Brasil
-https://rdcanais.net/canalbrasil.m3u8
-#EXTINF:-1 tvg-id="cinemax" tvg-name="Cinemax" tvg-logo="/logos/cinemax.png" group-title="Filmes e Séries",Cinemax
-https://rdcanais.net/cinemax.m3u8
-#EXTINF:-1 tvg-id="hbo" tvg-name="HBO" tvg-logo="/logos/hbo.png" group-title="Filmes e Séries",HBO
-https://rdcanais.net/hbo.m3u8
-#EXTINF:-1 tvg-id="hbo-2" tvg-name="HBO 2" tvg-logo="/logos/hbo-2.png" group-title="Filmes e Séries",HBO 2
-https://rdcanais.net/hbo2.m3u8
-#EXTINF:-1 tvg-id="hbo-family" tvg-name="HBO Family" tvg-logo="/logos/hbo-family.png" group-title="Filmes e Séries",HBO Family
-https://rdcanais.net/hbofamily.m3u8
-#EXTINF:-1 tvg-id="hbo-mundi" tvg-name="HBO Mundi" tvg-logo="/logos/hbo-mundi.png" group-title="Filmes e Séries",HBO Mundi
-https://rdcanais.net/hbomundi.m3u8
-#EXTINF:-1 tvg-id="hbo-plus" tvg-name="HBO Plus" tvg-logo="/logos/hbo-plus.png" group-title="Filmes e Séries",HBO Plus
-https://rdcanais.net/hboplus.m3u8
-#EXTINF:-1 tvg-id="hbo-pop" tvg-name="HBO Pop" tvg-logo="/logos/hbo-pop.png" group-title="Filmes e Séries",HBO Pop
-https://rdcanais.net/hbopop.m3u8
-#EXTINF:-1 tvg-id="hbo-signature" tvg-name="HBO Signature" tvg-logo="/logos/hbo-signature.png" group-title="Filmes e Séries",HBO Signature
-https://rdcanais.net/hbosignature.m3u8
-#EXTINF:-1 tvg-id="hbo-xtreme" tvg-name="HBO Xtreme" tvg-logo="/logos/hbo-xtreme.png" group-title="Filmes e Séries",HBO Xtreme
-https://rdcanais.net/hboxtreme.m3u8
-#EXTINF:-1 tvg-id="megapix" tvg-name="Megapix" tvg-logo="/logos/megapix.png" group-title="Filmes e Séries",Megapix
-https://rdcanais.net/megapix.m3u8
-#EXTINF:-1 tvg-id="paramount" tvg-name="Paramount" tvg-logo="/logos/paramount.png" group-title="Filmes e Séries",Paramount
-https://rdcanais.net/paramount.m3u8
-#EXTINF:-1 tvg-id="sony-channel" tvg-name="Sony Channel" tvg-logo="/logos/sony-channel.png" group-title="Filmes e Séries",Sony Channel
-https://rdcanais.net/sonychannel.m3u8
-#EXTINF:-1 tvg-id="space" tvg-name="Space" tvg-logo="/logos/space.png" group-title="Filmes e Séries",Space
-https://rdcanais.net/space.m3u8
-#EXTINF:-1 tvg-id="tcm" tvg-name="TCM" tvg-logo="/logos/tcm.png" group-title="Filmes e Séries",TCM
-https://rdcanais.net/tcm.m3u8
-#EXTINF:-1 tvg-id="tnt" tvg-name="TNT" tvg-logo="/logos/tnt.png" group-title="Filmes e Séries",TNT
-https://rdcanais.net/tnt.m3u8
-#EXTINF:-1 tvg-id="tnt-series" tvg-name="TNT Series" tvg-logo="/logos/tnt-series.png" group-title="Filmes e Séries",TNT Series
-https://rdcanais.net/tntseries.m3u8
-#EXTINF:-1 tvg-id="telecine-action" tvg-name="Telecine Action" tvg-logo="/logos/telecine-action.png" group-title="Filmes e Séries",Telecine Action
-https://rdcanais.net/telecineaction.m3u8
-#EXTINF:-1 tvg-id="telecine-cult" tvg-name="Telecine Cult" tvg-logo="/logos/telecine-cult.png" group-title="Filmes e Séries",Telecine Cult
-https://rdcanais.net/telecinecult.m3u8
-#EXTINF:-1 tvg-id="telecine-fun" tvg-name="Telecine Fun" tvg-logo="/logos/telecine-fun.png" group-title="Filmes e Séries",Telecine Fun
-https://rdcanais.net/telecinefun.m3u8
-#EXTINF:-1 tvg-id="telecine-pipoca" tvg-name="Telecine Pipoca" tvg-logo="/logos/telecine-pipoca.png" group-title="Filmes e Séries",Telecine Pipoca
-https://rdcanais.net/telecinepipoca.m3u8
-#EXTINF:-1 tvg-id="telecine-premium" tvg-name="Telecine Premium" tvg-logo="/logos/telecine-premium.png" group-title="Filmes e Séries",Telecine Premium
-https://rdcanais.net/telecinepremium.m3u8
-#EXTINF:-1 tvg-id="telecine-touch" tvg-name="Telecine Touch" tvg-logo="/logos/telecine-touch.png" group-title="Filmes e Séries",Telecine Touch
-https://rdcanais.net/telecinetouch.m3u8
-#EXTINF:-1 tvg-id="universal-tv" tvg-name="Universal TV" tvg-logo="/logos/universal-tv.png" group-title="Filmes e Séries",Universal TV
-https://rdcanais.net/universaltv.m3u8
-#EXTINF:-1 tvg-id="warner-channel" tvg-name="Warner Channel" tvg-logo="/logos/warner-channel.png" group-title="Filmes e Séries",Warner Channel
-https://rdcanais.net/warnerchannel.m3u8
-#EXTINF:-1 tvg-id="cartoon-network" tvg-name="Cartoon Network" tvg-logo="/logos/cartoon-network.png" group-title="Infantis",Cartoon Network
-https://rdcanais.net/cartoonnetwork.m3u8
-#EXTINF:-1 tvg-id="cartoonito" tvg-name="Cartoonito" tvg-logo="/logos/cartoonito.png" group-title="Infantis",Cartoonito
-https://rdcanais.net/cartoonito.m3u8
-#EXTINF:-1 tvg-id="discovery-kids" tvg-name="Discovery Kids" tvg-logo="/logos/discovery-kids.png" group-title="Infantis",Discovery Kids
-https://rdcanais.net/discoverykids.m3u8
-#EXTINF:-1 tvg-id="disney-channel" tvg-name="Disney Channel" tvg-logo="/logos/disney-channel.png" group-title="Infantis",Disney Channel
-https://rdcanais.net/disneychannel.m3u8
-#EXTINF:-1 tvg-id="disney-junior" tvg-name="Disney Junior" tvg-logo="/logos/disney-junior.png" group-title="Infantis",Disney Junior
-https://rdcanais.net/disneyjunior.m3u8
-#EXTINF:-1 tvg-id="gloob" tvg-name="Gloob" tvg-logo="/logos/gloob.png" group-title="Infantis",Gloob
-https://rdcanais.net/gloob.m3u8
-#EXTINF:-1 tvg-id="gloobinho" tvg-name="Gloobinho" tvg-logo="/logos/gloobinho.png" group-title="Infantis",Gloobinho
-https://rdcanais.net/gloobinho.m3u8
-#EXTINF:-1 tvg-id="nickelodeon" tvg-name="Nickelodeon" tvg-logo="/logos/nickelodeon.png" group-title="Infantis",Nickelodeon
-https://rdcanais.net/nickelodeon.m3u8
-#EXTINF:-1 tvg-id="tooncast" tvg-name="Tooncast" tvg-logo="/logos/tooncast.png" group-title="Infantis",Tooncast
-https://rdcanais.net/tooncast.m3u8
-#EXTINF:-1 tvg-id="zoomoo" tvg-name="Zoomoo" tvg-logo="/logos/zoomoo.png" group-title="Infantis",Zoomoo
-https://rdcanais.net/zoomoo.m3u8
-#EXTINF:-1 tvg-id="bis" tvg-name="Bis" tvg-logo="/logos/bis.png" group-title="Música",Bis
-https://rdcanais.net/bis.m3u8
-#EXTINF:-1 tvg-id="mtv" tvg-name="MTV" tvg-logo="/logos/mtv.png" group-title="Música",MTV
-https://rdcanais.net/mtv.m3u8
-#EXTINF:-1 tvg-id="mtv-live" tvg-name="MTV Live" tvg-logo="/logos/mtv-live.png" group-title="Música",MTV Live
-https://rdcanais.net/mtvlive.m3u8
-#EXTINF:-1 tvg-id="music-box-brasil" tvg-name="Music Box Brasil" tvg-logo="/logos/music-box-brasil.png" group-title="Música",Music Box Brasil
-https://rdcanais.net/musicboxbrasil.m3u8
-#EXTINF:-1 tvg-id="bandnews" tvg-name="BandNews" tvg-logo="/logos/bandnews.png" group-title="Notícias",BandNews
-https://rdcanais.net/bandnews.m3u8
-#EXTINF:-1 tvg-id="cnn-brasil" tvg-name="CNN Brasil" tvg-logo="/logos/cnn-brasil.png" group-title="Notícias",CNN Brasil
-https://rdcanais.net/cnnbrasil.m3u8
-#EXTINF:-1 tvg-id="globonews" tvg-name="GloboNews" tvg-logo="/logos/globonews.png" group-title="Notícias",GloboNews
-https://rdcanais.net/globonews.m3u8
-#EXTINF:-1 tvg-id="jovem-pan-news" tvg-name="Jovem Pan News" tvg-logo="/logos/jovem-pan-news.png" group-title="Notícias",Jovem Pan News
-https://rdcanais.net/jovempannews.m3u8
-#EXTINF:-1 tvg-id="record-news" tvg-name="Record News" tvg-logo="/logos/record-news.png" group-title="Notícias",Record News
-https://rdcanais.net/recordnews.m3u8
-#EXTINF:-1 tvg-id="cancao-nova" tvg-name="Canção Nova" tvg-logo="/logos/cancao-nova.png" group-title="Religiosos",Canção Nova
-https://rdcanais.net/cancaonova.m3u8
-#EXTINF:-1 tvg-id="gospel-movies" tvg-name="Gospel Movies" tvg-logo="/logos/gospel-movies.png" group-title="Religiosos",Gospel Movies
-https://rdcanais.net/gospelmovies.m3u8
-#EXTINF:-1 tvg-id="novo-tempo" tvg-name="Novo Tempo" tvg-logo="/logos/novo-tempo.png" group-title="Religiosos",Novo Tempo
-https://rdcanais.net/novotempo.m3u8
-#EXTINF:-1 tvg-id="rede-gospel" tvg-name="Rede Gospel" tvg-logo="/logos/rede-gospel.png" group-title="Religiosos",Rede Gospel
-https://rdcanais.net/redegospel.m3u8
-#EXTINF:-1 tvg-id="rede-seculo-21" tvg-name="Rede Século 21" tvg-logo="/logos/rede-seculo-21.png" group-title="Religiosos",Rede Século 21
-https://rdcanais.net/redeseculo21.m3u8
-#EXTINF:-1 tvg-id="rede-super" tvg-name="Rede Super" tvg-logo="/logos/rede-super.png" group-title="Religiosos",Rede Super
-https://rdcanais.net/redesuper.m3u8
-#EXTINF:-1 tvg-id="rede-vida" tvg-name="Rede Vida" tvg-logo="/logos/rede-vida.png" group-title="Religiosos",Rede Vida
-https://rdcanais.net/redevida.m3u8
-#EXTINF:-1 tvg-id="tv-aparecida" tvg-name="TV Aparecida" tvg-logo="/logos/tv-aparecida.png" group-title="Religiosos",TV Aparecida
-https://rdcanais.net/tvaparecida.m3u8
-#EXTINF:-1 tvg-id="tv-pai-eterno" tvg-name="TV Pai Eterno" tvg-logo="/logos/tv-pai-eterno.png" group-title="Religiosos",TV Pai Eterno
-https://rdcanais.net/tvpaieterno.m3u8
-#EXTINF:-1 tvg-id="comedy-central" tvg-name="Comedy Central" tvg-logo="/logos/comedy-central.png" group-title="Variedades",Comedy Central
-https://rdcanais.net/comedycentral.m3u8
-#EXTINF:-1 tvg-id="e" tvg-name="E!" tvg-logo="/logos/e.png" group-title="Variedades",E!
-https://rdcanais.net/e.m3u8
-#EXTINF:-1 tvg-id="gnt" tvg-name="GNT" tvg-logo="/logos/gnt.png" group-title="Variedades",GNT
-https://rdcanais.net/gnt.m3u8
-#EXTINF:-1 tvg-id="multishow" tvg-name="Multishow" tvg-logo="/logos/multishow.png" group-title="Variedades",Multishow
-https://rdcanais.net/multishow.m3u8
-#EXTINF:-1 tvg-id="tnt-novelas" tvg-name="TNT Novelas" tvg-logo="/logos/tnt-novelas.png" group-title="Variedades",TNT Novelas
-https://rdcanais.net/tntnovelas.m3u8
-#EXTINF:-1 tvg-id="viva" tvg-name="Viva" tvg-logo="/logos/viva.png" group-title="Variedades",Viva
-https://rdcanais.net/viva.m3u8
-#EXTINF:-1 tvg-id="woohoo" tvg-name="Woohoo" tvg-logo="/logos/woohoo.png" group-title="Variedades",Woohoo
-https://rdcanais.net/woohoo.m3u8
-`;
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",Band
+https://alerquina54105.embedtv.lat/bandsp
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",Band SP
+https://alerquina54105.embedtv.lat/bandsp
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",INTEGRAÇÃO JUIZ DE FORA 
+http://tjtor8411.com:80/Osiel123/Felicidade321/72068.ts
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",Globo MG
+https://rdcanais.net/globomg
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",Globo ES
+https://rdcanais.net/globoes
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",Globo RJ
+https://rdcanais.net/globorj
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",Globo SP
+https://rdcanais.net/globosp
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",Futura
+https://rdcanais.net/futura
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",Record MG
+https://alerquina54105.embedtv.lat/recordmg
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",Record TV
+https://rdcanais.net/record
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",Rede TV
+https://rdcanais.net/redetv
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",SBT MG ALTEROSA 
+http://tjtor8411.com:80/Osiel123/Felicidade321/72621.ts
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",SBT
+https://rdcanais.net/sbt
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",TV Brasil
+https://rdcanais.net/tvbrasil
+
+#EXTINF:-1 group-title="TV ABERTA & REGIONAIS",TV Cultura
+https://v1.rdse.rest/tvcultura
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Agro+
+https://rdcanais.net/agromais
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Animal Planet
+https://rdcanais.net/animalplanet
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Arte 1
+https://rdcanais.net/arte1
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Curta!
+https://v1.rdse.rest/curta
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Discovery Channel
+https://rdcanais.net/discoverychannel
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Discovery H&H
+https://alerquina54105.embedtv.lat/discoveryhh
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Discovery Science
+https://alerquina54105.embedtv.lat/discoveryscience
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Discovery Theater
+https://rdcanais.net/discoverytheater
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Discovery Turbo
+https://alerquina54105.embedtv.lat/discoveryturbo
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Discovery World
+https://alerquina54105.embedtv.lat/discoveryworld
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Dog TV
+https://alerquina54105.embedtv.lat/dogtv
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Fish TV
+https://v1.rdse.rest/fishtv
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Food Network
+https://rdcanais.net/foodnetwork
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",HGTV
+https://rdcanais.net/hgtv
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",History 2
+https://rdcanais.net/history2
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",History Channel
+https://rdcanais.net/history
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Investigação Discovery
+https://v2.rdse.site/discoveryid
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",NatGeo Wild
+http://up.kiwi/351921603109/34939156/1260706.ts
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",National Geographic
+http://up.kiwi/351921603109/34939156/1260707.ts
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",TLC
+https://rdcanais.net/tlc
+
+#EXTINF:-1 group-title="DOCUMENTÁRIOS",Travel Box Brasil
+http://up.kiwi/351921603109/34939156/1320.ts
+
+#EXTINF:-1 group-title="ESPORTES & PPV",Band Sports
+https://rdcanais.net/bandsports
+
+#EXTINF:-1 group-title="ESPORTES & PPV",Combate
+https://alerquina54105.embedtv.lat/combate
+
+#EXTINF:-1 group-title="ESPORTES & PPV",DAZN
+https://v1.rdse.rest/dazn
+
+#EXTINF:-1 group-title="ESPORTES & PPV",DAZN 2
+https://v1.rdse.rest/dazn2
+
+#EXTINF:-1 group-title="ESPORTES & PPV",DAZN 3
+https://v1.rdse.rest/dazn3
+
+#EXTINF:-1 group-title="ESPORTES & PPV",DAZN 4
+https://v1.rdse.rest/dazn4
+
+#EXTINF:-1 group-title="ESPORTES & PPV",DAZN 5
+https://v1.rdse.rest/dazn5
+
+#EXTINF:-1 group-title="ESPORTES & PPV",ESPN
+https://rdcanais.net/espn
+
+#EXTINF:-1 group-title="ESPORTES & PPV",ESPN 2
+https://rdcanais.net/espn2
+
+#EXTINF:-1 group-title="ESPORTES & PPV",ESPN 3
+https://rdcanais.net/espn3
+
+#EXTINF:-1 group-title="ESPORTES & PPV",ESPN 4
+https://rdcanais.net/espn4
+
+#EXTINF:-1 group-title="ESPORTES & PPV",ESPN 5
+https://alerquina54105.embedtv.lat/espn5
+
+#EXTINF:-1 group-title="ESPORTES & PPV",ESPN 6
+https://alerquina54105.embedtv.lat/espn6
+
+#EXTINF:-1 group-title="ESPORTES & PPV",Fox Sports
+https://alerquina54105.embedtv.lat/foxsports
+
+#EXTINF:-1 group-title="ESPORTES & PPV",Fox Sports 2
+https://alerquina54105.embedtv.lat/foxsports2
+
+#EXTINF:-1 group-title="ESPORTES & PPV",Premiere
+https://rdcanais.net/premiere
+
+#EXTINF:-1 group-title="ESPORTES & PPV",Premiere 2
+https://rdcanais.net/premiere2
+
+#EXTINF:-1 group-title="ESPORTES & PPV",Premiere 3
+https://rdcanais.net/premiere3
+
+#EXTINF:-1 group-title="ESPORTES & PPV",Premiere 4
+https://rdcanais.net/premiere4
+
+#EXTINF:-1 group-title="ESPORTES & PPV",Premiere 5
+https://rdcanais.net/premiere5
+
+#EXTINF:-1 group-title="ESPORTES & PPV",Premiere 6
+https://rdcanais.net/premiere6
+
+#EXTINF:-1 group-title="ESPORTES & PPV",Premiere 7
+https://rdcanais.net/premiere7
+
+#EXTINF:-1 group-title="ESPORTES & PPV",Premiere Clubes
+https://rdcanais.net/premiereclubes
+
+#EXTINF:-1 group-title="ESPORTES & PPV",SportTV
+https://v1.rdse.rest/sporttv
+
+#EXTINF:-1 group-title="ESPORTES & PPV",SportTV 2
+https://v1.rdse.rest/sporttv2
+
+#EXTINF:-1 group-title="ESPORTES & PPV",SportTV 3
+https://v1.rdse.rest/sporttv3
+
+#EXTINF:-1 group-title="ESPORTES & PPV",SportTV 4
+https://v1.rdse.rest/sporttv4
+
+#EXTINF:-1 group-title="ESPORTES & PPV",SportTV 5
+https://v1.rdse.rest/sporttv5
+
+#EXTINF:-1 group-title="ESPORTES & PPV",SportTV 6
+https://v1.rdse.rest/sporttv6
+
+#EXTINF:-1 group-title="ESPORTES & PPV",Off
+https://rdcanais.net/canaloff
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",A&E
+https://alerquina54105.embedtv.lat/ae
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",AMC
+https://rdcanais.net/amc
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Art 1
+https://rdcanais.net/arte1
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",AXN
+https://rdcanais.net/axn
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Canal Brasil
+https://rdcanais.net/canalbrasil
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Cinemax
+https://alerquina54105.embedtv.lat/cinemax
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",HBO
+https://alerquina54105.embedtv.lat/hbo
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",HBO 2
+https://alerquina54105.embedtv.lat/hbo2
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",HBO Family
+https://alerquina54105.embedtv.lat/hbofamily
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",HBO Mundi
+https://alerquina54105.embedtv.lat/hbomundi
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",HBO Plus
+https://alerquina54105.embedtv.lat/hboplus
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",HBO Pop
+https://alerquina54105.embedtv.lat/hbopop
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",HBO Signature
+https://v1.rdse.rest/hbosignature
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",HBO Xtreme
+https://alerquina54105.embedtv.lat/hboxtreme
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Megapix
+https://rdcanais.net/megapix
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Paramount
+http://up.kiwi/351921603109/34939156/829.ts
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Sony Channel
+https://alerquina54105.embedtv.lat/sonychannel
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Space
+https://rdcanais.net/space
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",TCM
+https://alerquina54105.embedtv.lat/tcm
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",TNT
+https://rdcanais.net/tnt
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",TNT Series
+https://rdcanais.net/tntseries
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Telecine Action
+https://rdcanais.net/telecineaction
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Telecine Cult
+https://rdcanais.net/telecinecult
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Telecine Fun
+https://rdcanais.net/telecinefun
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Telecine Pipoca
+https://rdcanais.net/telecinepipoca
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Telecine Premium
+https://rdcanais.net/telecinepremium
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Telecine Touch
+https://rdcanais.net/telecinetouch
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Studio Universal 
+https://rdcanais.net/studiouniversal
+
+#EXTINF:-1 group-title="FILMES & SÉRIES",Warner Channel
+https://alerquina54105.embedtv.lat/warnerchannel
+
+#EXTINF:-1 group-title="INFANTIS",Cartoon Network
+https://rdcanais.net/cartoonnetwork
+
+#EXTINF:-1 group-title="INFANTIS",Cartoonito
+https://alerquina54105.embedtv.lat/cartoonito
+
+#EXTINF:-1 group-title="INFANTIS",Discovery Kids
+https://rdcanais.net/discoverykids
+
+#EXTINF:-1 group-title="INFANTIS",Disney Channel
+http://up.kiwi/351921603109/34939156/1260678.ts
+
+#EXTINF:-1 group-title="INFANTIS",Disney Junior
+http://up.kiwi/351921603109/34939156/1260679.ts
+
+#EXTINF:-1 group-title="INFANTIS",Gloob
+https://rdcanais.net/gloob
+
+#EXTINF:-1 group-title="INFANTIS",Gloobinho
+https://rdcanais.net/gloob
+
+#EXTINF:-1 group-title="INFANTIS",Nickelodeon
+https://stmv2.srvif.com/nicktoons/nicktoons/playlist.m3u8
+
+#EXTINF:-1 group-title="INFANTIS",Tooncast
+https://v1.rdse.rest/tooncast
+
+#EXTINF:-1 group-title="INFANTIS",Ra Tim Bum 
+http://up.kiwi/351921603109/34939156/296384.ts
+
+#EXTINF:-1 group-title="INFANTIS",Zoomoo
+https://alerquina54105.embedtv.lat/zoomoo
+
+#EXTINF:-1 group-title="MÚSICA",Bis
+https://rdcanais.net/bis
+
+#EXTINF:-1 group-title="MÚSICA",MTV
+https://alerquina54105.embedtv.lat/mtv
+
+#EXTINF:-1 group-title="MÚSICA",MTV Live
+https://v1.rdse.rest/mtv
+
+#EXTINF:-1 group-title="MÚSICA",Music Box Brasil
+https://v1.rdse.rest/musicbox
+
+#EXTINF:-1 group-title="NOTÍCIAS",BandNews
+https://alerquina54105.embedtv.lat/bandnews
+
+#EXTINF:-1 group-title="NOTÍCIAS",CNN Brasil
+https://rdcanais.net/cnnbrasil
+
+#EXTINF:-1 group-title="NOTÍCIAS",GloboNews
+https://rdcanais.net/globonews
+
+#EXTINF:-1 group-title="NOTÍCIAS",Jovem Pan News
+https://alerquina54105.embedtv.lat/jovempan
+
+#EXTINF:-1 group-title="NOTÍCIAS",Record News
+https://rdcanais.net/recordnews
+
+#EXTINF:-1 group-title="RELIGIOSOS",Canção Nova
+https://alerquina54105.embedtv.lat/cancaonova
+
+#EXTINF:-1 group-title="RELIGIOSOS",Gospel Movies
+https://alerquina54105.embedtv.lat/gospelmovies
+
+#EXTINF:-1 group-title="RELIGIOSOS",Gospel Music
+https://stmv1.srvif.com/gmusic/gmusic/playlist.m3u8
+
+#EXTINF:-1 group-title="RELIGIOSOS",Novo Tempo
+https://alerquina54105.embedtv.lat/novotempo
+
+#EXTINF:-1 group-title="RELIGIOSOS",Rede Gospel
+https://v1.rdse.rest/redegospel
+
+#EXTINF:-1 group-title="RELIGIOSOS",Rede Século 21
+https://v1.rdse.rest/redeseculo21
+
+#EXTINF:-1 group-title="RELIGIOSOS",Rede Super
+https://v1.rdse.rest/redesuper
+
+#EXTINF:-1 group-title="RELIGIOSOS",Rede Vida
+https://alerquina54105.embedtv.lat/redevida
+
+#EXTINF:-1 group-title="RELIGIOSOS",TV Aparecida
+https://alerquina54105.embedtv.lat/aparecida
+
+#EXTINF:-1 group-title="RELIGIOSOS",TV Pai Eterno
+https://alerquina54105.embedtv.lat/tvpaieerno
+
+#EXTINF:-1 group-title="VARIEDADES",Comedy Central
+https://alerquina54105.embedtv.lat/comedycentral
+
+#EXTINF:-1 group-title="VARIEDADES",E!
+https://alerquina54105.embedtv.lat/ei
+
+#EXTINF:-1 group-title="VARIEDADES",GNT
+https://rdcanais.net/gnt
+
+#EXTINF:-1 group-title="VARIEDADES",Multishow
+https://rdcanais.net/multishow
+
+#EXTINF:-1 group-title="VARIEDADES",TNT Novelas
+https://rdcanais.net/tntnovelas
+
+#EXTINF:-1 group-title="VARIEDADES",Viva
+https://v1.rdse.rest/globoplaynovelas
+
+#EXTINF:-1 group-title="VARIEDADES",Woohoo
+https://v1.rdse.rest/woohoo`;
 
 export const PLAYLIST_RAW = m3uPlaylist;
+export const DEFAULT_PLAYLIST = m3uPlaylist;

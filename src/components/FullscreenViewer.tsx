@@ -8,8 +8,13 @@ import {
   Copy,
   Check,
   ExternalLink,
-  Volume2,
+  RefreshCw,
+  AlertCircle,
+  Tv,
+  Play,
 } from 'lucide-react';
+import Hls from 'hls.js';
+import mpegts from 'mpegts.js';
 import { Channel } from '../types/iptv';
 import { getChannelLogo, getFallbackSvg } from '../data/channelLogos';
 import { soundService } from '../services/soundService';
@@ -32,6 +37,13 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
   const [showControls, setShowControls] = useState(true);
   const [copied, setCopied] = useState(false);
   const [aspectFit, setAspectFit] = useState<'contain' | 'cover'>('contain');
+  const [playerError, setPlayerError] = useState<string | null>(null);
+  const [useProxy, setUseProxy] = useState<boolean>(false);
+  const [engineType, setEngineType] = useState<'hls' | 'mpegts' | 'embed' | 'native'>('embed');
+
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const hlsRef = useRef<Hls | null>(null);
+  const mpegtsRef = useRef<mpegts.Player | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const currentIndex = channels.findIndex((c) => c.id === channel.id || c.name === channel.name);
@@ -39,7 +51,20 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
   const nextChannel = currentIndex < channels.length - 1 ? channels[currentIndex + 1] : channels[0];
 
   const logoSrc = customLogos[channel.name] || channel.logo || getChannelLogo(channel.name);
-  const isDirectVideo = channel.url.endsWith('.m3u8') || channel.url.endsWith('.ts');
+
+  // Detect stream protocol / format
+  const isHls = channel.url.includes('.m3u8') || channel.url.includes('/hls/');
+  const isMpegTs = channel.url.includes('.ts') || channel.url.includes(':80/');
+  const isDirectMedia = isHls || isMpegTs;
+
+  // Resolve stream URL (auto proxy HTTP on HTTPS to avoid Mixed Content / CORS)
+  const getStreamUrl = (rawUrl: string, forceProxy = false) => {
+    const isMixedContent = window.location.protocol === 'https:' && rawUrl.startsWith('http://');
+    if (forceProxy || isMixedContent) {
+      return `/api/stream-proxy?url=${encodeURIComponent(rawUrl)}`;
+    }
+    return rawUrl;
+  };
 
   const resetHideTimer = () => {
     setShowControls(true);
@@ -49,6 +74,7 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
     }, 4500);
   };
 
+  // Keyboard navigation & remote control
   useEffect(() => {
     resetHideTimer();
     const handleActivity = () => resetHideTimer();
@@ -81,6 +107,123 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
     };
   }, [channel, prevChannel, nextChannel]);
 
+  // Video Engine Initializer (HLS.js / MPEGTS.js / Native)
+  useEffect(() => {
+    setPlayerError(null);
+
+    // Destroy existing instances
+    if (hlsRef.current) {
+      hlsRef.current.destroy();
+      hlsRef.current = null;
+    }
+    if (mpegtsRef.current) {
+      mpegtsRef.current.destroy();
+      mpegtsRef.current = null;
+    }
+
+    if (!isDirectMedia) {
+      setEngineType('embed');
+      return;
+    }
+
+    const videoEl = videoRef.current;
+    if (!videoEl) return;
+
+    const streamUrl = getStreamUrl(channel.url, useProxy);
+
+    // 1. MPEG-TS stream (.ts) via mpegts.js
+    if (isMpegTs) {
+      setEngineType('mpegts');
+      if (mpegts.isSupported()) {
+        try {
+          const player = mpegts.createPlayer(
+            {
+              type: 'mse',
+              isLive: true,
+              url: streamUrl,
+            },
+            {
+              enableWorker: true,
+              lazyLoadMaxDuration: 3 * 60,
+              seekType: 'range',
+            }
+          );
+          player.attachMediaElement(videoEl);
+          player.load();
+          const playRes = player.play();
+          if (playRes && typeof (playRes as Promise<void>).catch === 'function') {
+            (playRes as Promise<void>).catch(() => {});
+          }
+
+          player.on(mpegts.Events.ERROR, (errorType: string, errorDetail: string) => {
+            console.warn('MPEG-TS Player warning/error:', errorType, errorDetail);
+            if (!useProxy && channel.url.startsWith('http://')) {
+              setUseProxy(true);
+            } else {
+              setPlayerError('Não foi possível carregar este stream TS diretamente.');
+            }
+          });
+
+          mpegtsRef.current = player;
+        } catch (err: any) {
+          console.error('Failed to init mpegts.js', err);
+          setPlayerError('Erro ao inicializar decodificador TS.');
+        }
+      } else {
+        videoEl.src = streamUrl;
+        videoEl.play().catch(() => {});
+      }
+      return;
+    }
+
+    // 2. HLS stream (.m3u8) via Hls.js
+    if (isHls) {
+      setEngineType('hls');
+      if (Hls.isSupported()) {
+        const hls = new Hls({
+          enableWorker: true,
+          lowLatencyMode: true,
+          maxBufferLength: 30,
+        });
+        hls.loadSource(streamUrl);
+        hls.attachMedia(videoEl);
+
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          videoEl.play().catch(() => {});
+        });
+
+        hls.on(Hls.Events.ERROR, (_, data) => {
+          if (data.fatal) {
+            console.warn('HLS fatal error:', data.type);
+            if (!useProxy) {
+              setUseProxy(true);
+            } else {
+              setPlayerError('Erro ao reproduzir stream HLS (.m3u8).');
+            }
+          }
+        });
+
+        hlsRef.current = hls;
+      } else if (videoEl.canPlayType('application/vnd.apple.mpegurl')) {
+        videoEl.src = streamUrl;
+        videoEl.play().catch(() => {});
+      } else {
+        setPlayerError('Seu navegador não suporta reprodução HLS nativa.');
+      }
+    }
+
+    return () => {
+      if (hlsRef.current) {
+        hlsRef.current.destroy();
+        hlsRef.current = null;
+      }
+      if (mpegtsRef.current) {
+        mpegtsRef.current.destroy();
+        mpegtsRef.current = null;
+      }
+    };
+  }, [channel.url, isDirectMedia, isHls, isMpegTs, useProxy]);
+
   const handleCopy = () => {
     soundService.playSelect();
     navigator.clipboard.writeText(channel.url);
@@ -92,24 +235,76 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
     <div className="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center select-none overflow-hidden">
       {/* Player Screen */}
       <div className="relative w-full h-full flex items-center justify-center bg-black">
-        {isDirectVideo ? (
-          <video
-            src={channel.url}
-            controls
-            autoPlay
-            playsInline
-            className={`w-full h-full ${aspectFit === 'cover' ? 'object-cover' : 'object-contain'}`}
-          />
+        {isDirectMedia ? (
+          <div className="relative w-full h-full flex items-center justify-center">
+            <video
+              ref={videoRef}
+              controls
+              autoPlay
+              playsInline
+              className={`w-full h-full ${aspectFit === 'cover' ? 'object-cover' : 'object-contain'}`}
+            />
+            {playerError && (
+              <div className="absolute inset-0 bg-black/90 flex flex-col items-center justify-center p-6 text-center z-10 space-y-4">
+                <AlertCircle className="w-12 h-12 text-[#ff4d4d]" />
+                <h3 className="text-base font-bold text-white">{playerError}</h3>
+                <p className="text-xs text-neutral-400 max-w-md">
+                  Streams IPTV diretos (.ts e .m3u8) podem necessitar de proxy ou permissão de rede local.
+                </p>
+                <div className="flex items-center gap-3 pt-2">
+                  {!useProxy && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        soundService.playSelect();
+                        setUseProxy(true);
+                      }}
+                      className="px-4 py-2 rounded-xl bg-[#690909] hover:bg-[#8c1010] text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <RefreshCw className="w-3.5 h-3.5" />
+                      Tentar via Proxy Seguro
+                    </button>
+                  )}
+                  <a
+                    href={channel.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-xs font-bold transition flex items-center gap-1.5"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    Abrir no VLC / Nova Aba
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
         ) : (
-          /* Ad-Shield Sandbox: allows scripts and same origin media playback, blocks popups and top-navigation ads */
-          <iframe
-            key={channel.url}
-            src={channel.url}
-            title={channel.name}
-            sandbox="allow-scripts allow-same-origin allow-presentation"
-            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-            className={`w-full h-full border-0 ${aspectFit === 'cover' ? 'scale-105' : ''}`}
-          />
+          /* Stream Embed Player para canais de web players */
+          <div className="relative w-full h-full">
+            <iframe
+              key={channel.url}
+              src={channel.url}
+              title={channel.name}
+              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+              className={`w-full h-full border-0 ${aspectFit === 'cover' ? 'scale-105' : ''}`}
+            />
+
+            {/* EmbedTV Sandbox Notice Helper */}
+            {channel.url.includes('embedtv') && (
+              <div className="absolute bottom-16 right-6 z-20 pointer-events-auto">
+                <a
+                  href={channel.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-3.5 py-2 rounded-xl bg-neutral-900/95 border border-[#8c1010] text-[#ff6b6b] hover:bg-[#690909] hover:text-white text-xs font-bold shadow-2xl flex items-center gap-2 backdrop-blur-md transition-all cursor-pointer"
+                  title="Abrir diretamente sem restrição de iframe"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  <span>Abrir em Nova Aba (Sem Sandbox)</span>
+                </a>
+              </div>
+            )}
+          </div>
         )}
       </div>
 
@@ -140,6 +335,9 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
             <div className="flex items-center gap-2 mt-0.5 text-xs text-neutral-300">
               <span className="px-1.5 py-0.5 rounded bg-[#690909]/60 border border-[#8c1010]/60 text-[#ff6b6b] font-semibold text-[10px]">
                 {channel.group || 'Geral'}
+              </span>
+              <span className="px-1.5 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-[10px] font-mono text-neutral-300 uppercase">
+                {engineType === 'hls' ? 'HLS .m3u8' : engineType === 'mpegts' ? 'MPEG-TS .ts' : 'Web Embed'}
               </span>
               <span className="flex items-center gap-1 text-[11px] text-[#ff6b6b]">
                 <ShieldCheck className="w-3.5 h-3.5" />
@@ -174,7 +372,7 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
             target="_blank"
             rel="noreferrer"
             className="p-2 rounded-xl bg-neutral-900/80 border border-neutral-700/60 text-neutral-300 hover:text-white hover:bg-neutral-800 transition cursor-pointer"
-            title="Abrir em nova aba"
+            title="Abrir stream em nova aba (sem iframe)"
           >
             <ExternalLink className="w-4 h-4" />
           </a>
@@ -235,8 +433,10 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
           <span>•</span>
           <span>[◀ / ▶] Trocar canal</span>
         </div>
-        <div className="text-[11px] text-[#ff6b6b] font-medium">
-          Reproduzindo em Modo Seguro Ad-Shield
+        <div className="text-[11px] text-[#ff6b6b] font-medium flex items-center gap-2">
+          <span>Modo {engineType.toUpperCase()}</span>
+          <span>•</span>
+          <span>Ad-Shield</span>
         </div>
       </div>
     </div>

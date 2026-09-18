@@ -41,6 +41,52 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', time: new Date().toISOString() });
 });
 
+// Proxy de Stream IPTV (MPEG-TS .ts e HLS .m3u8) - Contorna CORS e Mixed-Content
+app.get('/api/stream-proxy', async (req, res) => {
+  const targetUrl = req.query.url as string;
+  if (!targetUrl) {
+    return res.status(400).send('URL is required');
+  }
+
+  try {
+    const upstreamRes = await fetch(targetUrl, {
+      method: 'GET',
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': '*/*',
+      },
+    });
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+
+    const contentType = upstreamRes.headers.get('content-type') || (targetUrl.includes('.ts') ? 'video/mp2t' : 'application/vnd.apple.mpegurl');
+    res.setHeader('Content-Type', contentType);
+
+    if (upstreamRes.body) {
+      const reader = upstreamRes.body.getReader();
+      const pump = async () => {
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            res.write(value);
+          }
+          res.end();
+        } catch {
+          res.end();
+        }
+      };
+      pump();
+    } else {
+      res.end();
+    }
+  } catch (err: any) {
+    res.status(502).send(`Proxy Error: ${err.message}`);
+  }
+});
+
 // Checagem de stream individual (com timeout)
 app.post('/api/check-stream', async (req, res) => {
   const { url, timeout = 6000 } = req.body;

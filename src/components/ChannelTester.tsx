@@ -903,7 +903,6 @@ export function ChannelTester({ initialStatus, playlistRaw, onStatusUpdate }: Ch
                 <iframe
                   src={playingChannel.url}
                   title={playingChannel.name}
-                  sandbox="allow-scripts allow-same-origin allow-presentation"
                   allow="autoplay; fullscreen; encrypted-media"
                   className="w-full h-full border-0 bg-black"
                 />
@@ -913,7 +912,7 @@ export function ChannelTester({ initialStatus, playlistRaw, onStatusUpdate }: Ch
             {/* Barra Informativa Ad-Shield */}
             <div className="px-5 py-3 border-t border-neutral-800 bg-neutral-950/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
               <div className="flex items-center gap-2 text-neutral-400">
-                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-[#ff4d4d] shrink-0" />
                 <span>
                   {playingChannel.url.endsWith('.m3u8') || playingChannel.url.endsWith('.ts')
                     ? 'Fluxo direto de vídeo (.m3u8/.ts) — 100% limpo, sem anúncios nem redirecionamentos.'
