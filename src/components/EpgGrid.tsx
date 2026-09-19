@@ -54,7 +54,7 @@ export const EpgGrid: React.FC<EpgGridProps> = ({
           const next = epg.nextProgram;
           const res = results[channel.id] || results[channel.name];
           const isOnline = res ? res.online : true;
-          const logoSrc = customLogos[channel.name] || channel.logo || getChannelLogo(channel.name);
+          const logoSrc = customLogos[channel.name] || channel.logo || getChannelLogo(channel.name, customLogos, channel.group);
 
           return (
             <div
@@ -76,19 +76,26 @@ export const EpgGrid: React.FC<EpgGridProps> = ({
                     src={logoSrc}
                     alt={channel.name}
                     loading="lazy"
+                    referrerPolicy="no-referrer"
                     className="max-h-full max-w-full object-contain"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = getFallbackSvg(channel.name);
+                      (e.target as HTMLImageElement).src = getFallbackSvg(channel.name, channel.group);
                     }}
                   />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-1.5">
-                    <span
-                      className={`w-2 h-2 rounded-full shrink-0 ${
-                        isOnline ? 'bg-[#ff4d4d]' : 'bg-neutral-600'
-                      }`}
-                    />
+                    <span className="relative flex h-2 w-2 shrink-0">
+                      {isOnline && (
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      )}
+                      <span
+                        className={`relative inline-flex rounded-full h-2 w-2 ${
+                          isOnline ? 'bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.9)]' : 'bg-rose-500 shadow-[0_0_6px_rgba(244,63,94,0.8)]'
+                        }`}
+                      />
+                    </span>
+                    <Radio className={`w-3 h-3 shrink-0 ${isOnline ? 'text-emerald-400 animate-pulse' : 'text-rose-400'}`} />
                     <h4 className="font-bold text-sm text-white truncate group-hover:text-[#ff9999]">
                       {channel.name}
                     </h4>

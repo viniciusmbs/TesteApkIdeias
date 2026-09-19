@@ -77,10 +77,10 @@ export default function App() {
 
       const logoMatch = header.match(/tvg-logo="([^"]+)"/i);
       const rawLogo = logoMatch ? logoMatch[1] : '';
-      const officialLogo = getChannelLogo(name);
+      const officialLogo = getChannelLogo(name, customLogos, group);
       const finalLogo = customLogos[name] || officialLogo || rawLogo;
 
-      const channelStatus = (statusData.statuses?.[name] || 'offline') as 'online' | 'offline';
+      const channelStatus = (statusData.statuses?.[name] || 'online') as 'online' | 'offline';
       const latency = statusData.latencies?.[name] ?? (channelStatus === 'online' ? 250 : undefined);
 
       if (name && cleanUrl) {
@@ -390,6 +390,7 @@ export default function App() {
           onClose={handleClosePlayer}
           onSelectChannel={handleChannelSelect}
           customLogos={customLogos}
+          isOnline={statusData.statuses[activeChannel.name] !== 'offline'}
         />
       )}
 

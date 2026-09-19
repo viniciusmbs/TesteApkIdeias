@@ -1,7 +1,3 @@
-/**
- * Playlist M3U Oficial com os 130 canais mapeados e logos 100% integrados
- */
-
 export const m3uPlaylist = `#EXTM3U
 
 #EXTINF:-1 group-title="TV ABERTA & REGIONAIS",Band
@@ -400,5 +396,5 @@ https://v1.rdse.rest/globoplaynovelas
 #EXTINF:-1 group-title="VARIEDADES",Woohoo
 https://v1.rdse.rest/woohoo`;
 
-export const PLAYLIST_RAW = m3uPlaylist;
 export const DEFAULT_PLAYLIST = m3uPlaylist;
+export const PLAYLIST_RAW = m3uPlaylist;

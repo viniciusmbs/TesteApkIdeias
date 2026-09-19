@@ -87,8 +87,8 @@ export const Header: React.FC<HeaderProps> = ({
               <h1 className="text-base sm:text-lg font-black text-white tracking-wide">
                 SatvApk <span className="text-[#ff4d4d] font-extrabold">IPTV</span>
               </h1>
-              <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#690909]/25 border border-[#690909]/50 text-[#ff6b6b] text-[10px] font-bold">
-                <Radio className="w-3 h-3 animate-pulse text-[#ff4d4d]" />
+              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/70 border border-emerald-500/50 text-emerald-300 text-[10px] font-bold shadow-sm shadow-emerald-950/60">
+                <Radio className="w-3 h-3 animate-pulse text-emerald-400" />
                 {displayOnline}/{displayTotal} ONLINE
               </span>
             </div>

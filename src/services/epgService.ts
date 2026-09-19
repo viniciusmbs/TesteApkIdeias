@@ -106,3 +106,30 @@ export const epgService = {
     };
   },
 };
+
+/**
+ * Recursos oficiais e guias XMLTV do repositório iptv-org/epg
+ * Compatíveis com players IPTV (TiviMate, IPTV Smarters, VLC, Kodi)
+ */
+export const IPTV_ORG_RESOURCES = {
+  repoUrl: 'https://github.com/iptv-org/epg',
+  logosJson: 'https://iptv-org.github.io/api/logos.json',
+  epgXmlGuides: [
+    {
+      provider: 'Mi.tv Brasil',
+      url: 'https://iptv-org.github.io/epg/guides/br/mi.tv.epg.xml',
+      coverage: 'TV Aberta, Fechada, Esportes e Notícias',
+    },
+    {
+      provider: 'Claro TV Brasil',
+      url: 'https://iptv-org.github.io/epg/guides/br/claro.com.br.epg.xml',
+      coverage: 'Grade completa operadora nacional',
+    },
+    {
+      provider: 'Sky Brasil',
+      url: 'https://iptv-org.github.io/epg/guides/br/sky.com.br.epg.xml',
+      coverage: 'Grade DTH nacional e canais premium',
+    },
+  ],
+};
+

@@ -12,6 +12,7 @@ import {
   AlertCircle,
   Tv,
   Play,
+  Radio,
 } from 'lucide-react';
 import Hls from 'hls.js';
 import mpegts from 'mpegts.js';
@@ -25,6 +26,7 @@ interface FullscreenViewerProps {
   onClose: () => void;
   onSelectChannel: (channel: Channel) => void;
   customLogos?: Record<string, string>;
+  isOnline?: boolean;
 }
 
 export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
@@ -33,6 +35,7 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
   onClose,
   onSelectChannel,
   customLogos = {},
+  isOnline = true,
 }) => {
   const [showControls, setShowControls] = useState(true);
   const [copied, setCopied] = useState(false);
@@ -40,17 +43,58 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
   const [playerError, setPlayerError] = useState<string | null>(null);
   const [useProxy, setUseProxy] = useState<boolean>(false);
   const [engineType, setEngineType] = useState<'hls' | 'mpegts' | 'embed' | 'native'>('embed');
+  const [autoPlayBadge, setAutoPlayBadge] = useState(true);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const hlsRef = useRef<Hls | null>(null);
   const mpegtsRef = useRef<mpegts.Player | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Auto-play exato de 1200ms solicitado pelo usuário ao abrir canal
+  useEffect(() => {
+    setAutoPlayBadge(true);
+    const badgeTimer = setTimeout(() => {
+      setAutoPlayBadge(false);
+    }, 3200);
+
+    const autoPlayTimer = setTimeout(() => {
+      // 1. Tenta acionar play no elemento <video>
+      if (videoRef.current) {
+        const p = videoRef.current.play();
+        if (p && typeof p.catch === 'function') {
+          p.catch((err) => {
+            console.warn('Autoplay 1200ms fallback para muted:', err);
+            if (videoRef.current) {
+              videoRef.current.muted = true;
+              videoRef.current.play().catch(() => {});
+            }
+          });
+        }
+      }
+
+      // 2. Se for Web Embed (iframe), foca e envia comandos padrão de play
+      if (iframeRef.current) {
+        try {
+          iframeRef.current.focus();
+          iframeRef.current.contentWindow?.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+          iframeRef.current.contentWindow?.postMessage({ type: 'play' }, '*');
+          iframeRef.current.contentWindow?.postMessage({ method: 'play' }, '*');
+        } catch (_) {}
+      }
+    }, 1200);
+
+    return () => {
+      clearTimeout(autoPlayTimer);
+      clearTimeout(badgeTimer);
+    };
+  }, [channel.url]);
 
   const currentIndex = channels.findIndex((c) => c.id === channel.id || c.name === channel.name);
   const prevChannel = currentIndex > 0 ? channels[currentIndex - 1] : channels[channels.length - 1];
   const nextChannel = currentIndex < channels.length - 1 ? channels[currentIndex + 1] : channels[0];
 
-  const logoSrc = customLogos[channel.name] || channel.logo || getChannelLogo(channel.name);
+  const logoSrc = customLogos[channel.name] || channel.logo || getChannelLogo(channel.name, customLogos, channel.group);
 
   // Detect stream protocol / format
   const isHls = channel.url.includes('.m3u8') || channel.url.includes('/hls/');
@@ -282,31 +326,41 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
           /* Stream Embed Player para canais de web players */
           <div className="relative w-full h-full">
             <iframe
+              ref={iframeRef}
               key={channel.url}
               src={channel.url}
               title={channel.name}
-              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+              allow="autoplay *; fullscreen *; encrypted-media *; picture-in-picture *"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-presentation"
               className={`w-full h-full border-0 ${aspectFit === 'cover' ? 'scale-105' : ''}`}
             />
 
-            {/* EmbedTV Sandbox Notice Helper */}
-            {channel.url.includes('embedtv') && (
-              <div className="absolute bottom-16 right-6 z-20 pointer-events-auto">
-                <a
-                  href={channel.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-3.5 py-2 rounded-xl bg-neutral-900/95 border border-[#8c1010] text-[#ff6b6b] hover:bg-[#690909] hover:text-white text-xs font-bold shadow-2xl flex items-center gap-2 backdrop-blur-md transition-all cursor-pointer"
-                  title="Abrir diretamente sem restrição de iframe"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  <span>Abrir em Nova Aba (Sem Sandbox)</span>
-                </a>
-              </div>
-            )}
+            {/* Quick External Open Button */}
+            <div className="absolute bottom-16 right-6 z-20 pointer-events-auto">
+              <a
+                href={channel.url}
+                target="_blank"
+                rel="noreferrer"
+                className="px-3.5 py-2 rounded-xl bg-neutral-900/95 border border-neutral-700 hover:border-neutral-500 text-neutral-200 hover:text-white text-xs font-bold shadow-2xl flex items-center gap-2 backdrop-blur-md transition-all cursor-pointer"
+                title="Abrir diretamente sem restrição de iframe"
+              >
+                <ExternalLink className="w-4 h-4 text-emerald-400" />
+                <span>Abrir em Nova Aba</span>
+              </a>
+            </div>
           </div>
         )}
       </div>
+
+      {/* Auto-Play 1.2s Floating Notification */}
+      {autoPlayBadge && (
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 z-30 pointer-events-none animate-in fade-in zoom-in-95 duration-200">
+          <div className="px-3.5 py-1.5 rounded-full bg-black/85 border border-emerald-500/60 text-emerald-300 text-xs font-semibold shadow-2xl flex items-center gap-2 backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            <span>Auto-Play Ativo (1200ms)</span>
+          </div>
+        </div>
+      )}
 
       {/* Top HUD: Channel Name & Quick Actions */}
       <div
@@ -319,18 +373,40 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
             <img
               src={logoSrc}
               alt={channel.name}
+              referrerPolicy="no-referrer"
               className="max-h-full max-w-full object-contain"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = getFallbackSvg(channel.name);
+                (e.target as HTMLImageElement).src = getFallbackSvg(channel.name, channel.group);
               }}
             />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#ff4d4d] shadow-[0_0_10px_rgba(255,77,77,0.9)]" />
+              <span className="relative flex h-2.5 w-2.5 shrink-0">
+                {isOnline && (
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                )}
+                <span
+                  className={`relative inline-flex rounded-full h-2.5 w-2.5 ${
+                    isOnline
+                      ? 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.9)]'
+                      : 'bg-rose-500 shadow-[0_0_10px_rgba(244,63,94,0.9)]'
+                  }`}
+                />
+              </span>
               <h2 className="text-lg sm:text-xl font-black text-white tracking-wide drop-shadow-md">
                 {channel.name}
               </h2>
+              <span
+                className={`px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 ${
+                  isOnline
+                    ? 'bg-emerald-950/80 border border-emerald-600/60 text-emerald-400'
+                    : 'bg-rose-950/80 border border-rose-600/60 text-rose-400'
+                }`}
+              >
+                <Radio className={`w-2.5 h-2.5 ${isOnline ? 'text-emerald-400 animate-pulse' : 'text-rose-400'}`} />
+                {isOnline ? 'Online' : 'Offline'}
+              </span>
             </div>
             <div className="flex items-center gap-2 mt-0.5 text-xs text-neutral-300">
               <span className="px-1.5 py-0.5 rounded bg-[#690909]/60 border border-[#8c1010]/60 text-[#ff6b6b] font-semibold text-[10px]">

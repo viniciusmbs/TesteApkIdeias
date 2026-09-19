@@ -9,6 +9,8 @@ export interface Channel {
   statusCode?: number;
 }
 
+export type CustomLogosMap = Record<string, string>;
+
 export interface ChannelCheckResult {
   online: boolean;
   status: number;

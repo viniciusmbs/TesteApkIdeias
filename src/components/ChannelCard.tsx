@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Play, Radio } from 'lucide-react';
 import { Channel } from '../types/iptv';
 import { getChannelLogo, getFallbackSvg } from '../data/channelLogos';
@@ -25,7 +25,12 @@ export const ChannelCard: React.FC<ChannelCardProps> = ({
   size = 'normal',
 }) => {
   const [imgError, setImgError] = useState(false);
-  const logoSrc = customLogo || channel.logo || getChannelLogo(channel.name);
+  const logoSrc = customLogo || channel.logo || getChannelLogo(channel.name, undefined, channel.group);
+
+  useEffect(() => {
+    setImgError(false);
+  }, [logoSrc]);
+
   const epg = epgService.getChannelEpg(channel.name, channel.group);
   const currentProg = epg.currentProgram?.title || 'Programação Ao Vivo';
 
@@ -54,16 +59,27 @@ export const ChannelCard: React.FC<ChannelCardProps> = ({
       {/* Top Bar: Status dot + Category */}
       <div className="flex items-center justify-between gap-1.5 w-full text-[11px]">
         <div className="flex items-center gap-1.5 min-w-0">
-          <span
-            className={`w-2 h-2 rounded-full shrink-0 ${
-              isOnline ? 'bg-[#ff4d4d] shadow-[0_0_8px_rgba(255,77,77,0.8)]' : 'bg-neutral-600'
-            }`}
-          />
+          <span className="relative flex h-2.5 w-2.5 shrink-0">
+            {isOnline && (
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            )}
+            <span
+              className={`relative inline-flex rounded-full h-2.5 w-2.5 ${
+                isOnline
+                  ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.95)]'
+                  : 'bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.85)]'
+              }`}
+            />
+          </span>
           {latency ? (
-            <span className="text-[10px] text-neutral-400 font-mono">{latency}ms</span>
+            <span className={`text-[10px] font-mono flex items-center gap-1 ${isOnline ? 'text-emerald-400' : 'text-rose-400'}`}>
+              <Radio className={`w-2.5 h-2.5 ${isOnline ? 'text-emerald-400 animate-pulse' : 'text-rose-400'}`} />
+              {latency}ms
+            </span>
           ) : (
-            <span className={`text-[10px] font-medium ${isOnline ? 'text-[#ff6b6b]' : 'text-neutral-500'}`}>
-              {isOnline ? 'AO VIVO' : 'OFF'}
+            <span className={`text-[10px] font-semibold tracking-wide flex items-center gap-1 ${isOnline ? 'text-emerald-400' : 'text-rose-400'}`}>
+              <Radio className={`w-2.5 h-2.5 ${isOnline ? 'text-emerald-400 animate-pulse' : 'text-rose-400'}`} />
+              {isOnline ? 'ONLINE' : 'OFFLINE'}
             </span>
           )}
         </div>
@@ -82,12 +98,13 @@ export const ChannelCard: React.FC<ChannelCardProps> = ({
             src={logoSrc}
             alt={channel.name}
             onError={() => setImgError(true)}
+            referrerPolicy="no-referrer"
             loading="lazy"
             className="max-h-16 max-w-[85%] object-contain drop-shadow-md group-hover:scale-105 group-focus:scale-105 transition-transform duration-200"
           />
         ) : (
           <img
-            src={getFallbackSvg(channel.name)}
+            src={getFallbackSvg(channel.name, channel.group)}
             alt={channel.name}
             className="max-h-14 max-w-[70%] object-contain drop-shadow-md"
           />

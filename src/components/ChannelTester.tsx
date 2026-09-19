@@ -699,11 +699,12 @@ export function ChannelTester({ initialStatus, playlistRaw, onStatusUpdate }: Ch
                 <div className="flex items-start gap-3 min-w-0">
                   <div className="w-10 h-10 rounded-xl bg-neutral-950 border border-neutral-800 flex items-center justify-center text-neutral-400 shrink-0 overflow-hidden p-1">
                     {(() => {
-                      const logoSrc = channel.logo || getChannelLogo(channel.name);
+                      const logoSrc = channel.logo || getChannelLogo(channel.name, undefined, channel.group);
                       return logoSrc ? (
                         <img
                           src={logoSrc}
                           alt={channel.name}
+                          referrerPolicy="no-referrer"
                           className="w-full h-full object-contain"
                           onError={(e) => {
                             (e.target as HTMLElement).style.display = 'none';
@@ -857,9 +858,9 @@ export function ChannelTester({ initialStatus, playlistRaw, onStatusUpdate }: Ch
               <div className="flex items-center gap-3 min-w-0">
                 <div className="w-8 h-8 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center p-1 shrink-0">
                   {(() => {
-                    const logoSrc = playingChannel.logo || getChannelLogo(playingChannel.name);
+                    const logoSrc = playingChannel.logo || getChannelLogo(playingChannel.name, undefined, playingChannel.group);
                     return logoSrc ? (
-                      <img src={logoSrc} alt="" className="w-full h-full object-contain" />
+                      <img src={logoSrc} alt="" referrerPolicy="no-referrer" className="w-full h-full object-contain" />
                     ) : (
                       <Tv className="w-4 h-4 text-emerald-400" />
                     );
